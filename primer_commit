@@ -1,0 +1,6 @@
+#lang racket
+; Descripción: Esta funcion permite crear a los jugadores tomando en cuenta lo solicitado y lo necesario para el juego.
+; Dom: id (int) X nombre (string) X dinero (int) X propiedades (list) X posicion (int) X estaEnCarcel (boolean) X totalCartasSalirCarcel (int)// sacado directamente del proyecto
+; Rec: devuelve una lista con los datos señalaos arriba
+; Tipo recursión: No aplica.
+(define (jugador id nombre dinero propiedades posicion estadoCarcel totalCartasCarcel)(list id nombre dinero (list propiedades) posicion estadoCarcel totalCartasCarcel ))
