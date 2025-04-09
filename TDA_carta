@@ -1,0 +1,2 @@
+#lang racket
+(define (card id tipo descripcion accion)(list id tipo descripcion accion))
