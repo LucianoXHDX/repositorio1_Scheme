@@ -3,4 +3,10 @@
 ; Dom: id (int) X nombre (string) X dinero (int) X propiedades (list) X posicion (int) X estaEnCarcel (boolean) X totalCartasSalirCarcel (int)// sacado directamente del proyecto
 ; Rec: devuelve una lista con los datos señalaos arriba
 ; Tipo recursión: No aplica.
-(define (jugador id nombre dinero propiedades posicion estadoCarcel totalCartasCarcel)(list id nombre dinero (list propiedades) posicion estadoCarcel totalCartasCarcel ))
+(define (player id nombre ficha dinero propiedades posicion estadoCarcel totalCartasCarcel)
+  (list id nombre ficha dinero (list propiedades) posicion estadoCarcel totalCartasCarcel ))
+;prueba
+;; para usar
+;(define jugador1 (nuevoJugador 82 "luciano" 2888 '() 0 #f 0))
+
+

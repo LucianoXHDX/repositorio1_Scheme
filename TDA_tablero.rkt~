@@ -1,0 +1,12 @@
+#lang racket
+(define(board propiedades cartas-suerte cartas-comunidad casillas-especiales)
+  (list propiedades cartas-suerte cartas-comunidad casillas-especiales))
+; para que esta funcion sirva debe crear la lista de los parametro que di arriba.
+
+; TDA tablero modifcador para agregar propiedad
+;(define (agregarPropiedad lista propiedad posicion))
+(define (agregarPropiedad lista propiedad posicion)
+  (list(cons propiedad posicion))
+ )
+;falta probar esto"
+(define lista-propiedades (list (cons "prop1" 1) (cons "prop2" 3) (cons "prop3" 6)))

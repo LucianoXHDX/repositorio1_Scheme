@@ -1,0 +1,13 @@
+#lang racket
+(provide (all-defined-out))
+;
+;Dominio
+;jugadores (lista) X tablero (tablero) X dineroBanco (int) X numeroDados (int) X turnoActual (int) X tasaImpuesto (int) X maximoCasas (int) X maximoHoteles (int) X estadoJuego (string)
+
+;
+;Ejemplo de uso
+;(define partida (juego '() tablero-juego 20000 2 0 10 4 1 "preparacion"))
+
+
+(define(juego jugadores tablero dineroBanco numeroDados turnoActual tasaImpuesto maximoCasas maximoHoteles estadoJuego)
+  (list jugadores tablero dineroBanco numeroDados turnoActual tasaImpuesto maximoCasas maximoHoteles estadoJuego))

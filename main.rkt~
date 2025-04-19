@@ -1,0 +1,10 @@
+#lang racket
+;este sera mi main
+(require "TDA_jugador.rkt")
+(require "TDA_propiedades.rkt")
+(require "TDA_carta.rkt")
+(require "TDA_juego.rkt")
+(require "TDA_jugadores.rkt")
+(require "TDA_tablero.rkt")
+(require "TDA_dados.rkt")
+
