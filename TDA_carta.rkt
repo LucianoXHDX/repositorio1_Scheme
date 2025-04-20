@@ -1,5 +1,9 @@
 #lang racket
 (provide (all-defined-out))
+; Descripción: Esta funcion es el contrcutor de las cartas
+; Dom: id(int)Xtipo(string)Xdescripcion(string)Xaccion(string)
+; Rec: una lista con los paraetros del dominio
+; Tipo recursión: No aplica.
 (define (carta id tipo descripcion accion)(list id tipo descripcion accion))
 
 (define parametroCarta
