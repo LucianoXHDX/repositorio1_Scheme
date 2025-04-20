@@ -39,7 +39,7 @@
 ; debo pasarlo asi (cons ELEMTO-A-AGREGAR (Get de la lista de propiedad
 ;setters necesarios para poder agreagar algo a la lista
 ;setter para propiedades
-(define (agregarListaPropiedades nuevaPropiedad)
+(define (tablero-agregar-propiedades nuevaPropiedad)
   (cons nuevaPropiedad (getListaPropiedadesTablero)
         (getListaSuerteTablero)
         (getListaComunidadTablero)
