@@ -1,9 +1,11 @@
 #lang racket
 (provide (all-defined-out))
 
+;Esta comentada
+
 ; Descripción: Esta funcion permite crear a los jugadores tomando en cuenta lo solicitado y lo necesario para el juego.
 ; Dom: id (int) X nombre (string) X dinero (int) X propiedades (list) X posicion (int) X estaEnCarcel (boolean) X totalCartasSalirCarcel (int)// sacado directamente del proyecto
-; Rec: devuelve una lista con los datos señalaos arriba
+; Rec: devuelve una lista con los datos señalados arriba
 ; Tipo recursión: No aplica.
 (define (jugador id nombre dinero propiedades posicion estadoCarcel totalCartasCarcel)
   (list id nombre dinero (list propiedades) posicion estadoCarcel totalCartasCarcel ))
@@ -16,7 +18,7 @@
 ; de aqui en adelante seran los getter de de las cosas que necesito
 
 
-; Descripción: Esta funcion define una lista ref para poder usar los indices y mas adelante obtener los paramatros que necesito.
+; Descripción: Esta funcion define una lista referenciada para poder usar los indices y mas adelante obtener los paramatros que necesito.
 ; Dom: lista del las propiedades del jugador
 ; Rec: lista referenciada del las propiedades del elemento.
 ; Tipo recursión: No aplica.
@@ -45,7 +47,7 @@
 ;esta funcion sirve para mostrar el dinero
 ; Descripción: Esta funcion entrega el dinero del jugador
 ; Dom: jugador consultado (list)
-; Rec: nombre del jugado consultado (int)(indexacion 2)
+; Rec: dinero del jugado consultado (int)(indexacion 2)
 ; Tipo recursión: No aplica.
 (define getDineroJugador
   (lambda(jugador)
