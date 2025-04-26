@@ -1,6 +1,7 @@
 #lang racket
-(provide (all-defined-out))
 
+(provide (all-defined-out))
+(require "TDA_propiedades.rkt")
 ;Esta comentada correctamente
 
 ; Descripción: Esta funcion permite crear a los jugadores tomando en cuenta lo solicitado y lo necesario para el juego.
@@ -98,16 +99,24 @@
 (define (setDinero jugador nuevoDinero)
   (list (getIdJugador jugador)
          (getNombreJugador jugador)
-         nuevoDinero
+          nuevoDinero
          (getPropiedadesJugador jugador)
          (getPosicionJugador jugador)
          (getCarcelJugador jugador)
          (getCartasCarcelJugador jugador)))
 ;funcion que perimt emodificar propiedades
+(define(setPropiedades jugador propiedad)
+  (list(getIdJugador jugador)
+       (getNombreJugador jugador)
+       (getDineroJugador jugador)
+       (cons propiedad(getPropiedadesJugador jugador))
+       (getPosicionJugador jugador)
+       (getCarcelJugador jugador)
+       (getCartasCarcelJugador jugador)))
 
 ;funcion que perimte modificar posicion
 ; Descripción: Esta funcion permite cambiar de posicion al jugador
-; Dom: jugador(list)XnuevaPosicion
+; Dom: jugador(list)XValoresDados(par)Xjuego
 ; Rec: una nueva lista del jugador con todos los atributos iguales excepto la posicion(int) que ha sido actualizada
 ; Tipo recursión: No aplica.
 (define (jugador-mover jugador valoresDados juego)
@@ -148,5 +157,12 @@
 
 
 
-
+; jugador comprar propiedad
+(define (jugador-comprar-propiedad jugador propiedad)
+  (if(>= (getDineroJugador jugador)(getPrecioPropiedad propiedad))
+     (setPropiedades
+      (setDinero jugador (-(getDineroJugador jugador) (getPrecioPropiedad propiedad)))
+      propiedad);si es verdadero va aca
+  jugador);si es falso va aca 
+  )
 
