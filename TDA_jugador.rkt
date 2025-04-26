@@ -1,7 +1,7 @@
 #lang racket
 (provide (all-defined-out))
 
-;Esta comentada
+;Esta comentada correctamente
 
 ; Descripción: Esta funcion permite crear a los jugadores tomando en cuenta lo solicitado y lo necesario para el juego.
 ; Dom: id (int) X nombre (string) X dinero (int) X propiedades (list) X posicion (int) X estaEnCarcel (boolean) X totalCartasSalirCarcel (int)// sacado directamente del proyecto
@@ -110,12 +110,12 @@
 ; Dom: jugador(list)XnuevaPosicion
 ; Rec: una nueva lista del jugador con todos los atributos iguales excepto la posicion(int) que ha sido actualizada
 ; Tipo recursión: No aplica.
-(define (setPosicion jugador nuevaPosicion)
+(define (jugador-mover jugador valoresDados juego)
   (list (getIdJugador jugador)
         (getNombreJugador jugador)
         (getDineroJugador jugador)
         (getPropiedadesJugador jugador)
-        nuevaPosicion
+       (+ (getPosicionJugador jugador) (car (valoresDados) (cadr(valoresDados))))
         (getCarcelJugador jugador)
         (getCartasCarcelJugador jugador)))
 ;funcion que perimte modificar estado de carcel
@@ -145,3 +145,8 @@
         (getPosicionJugador jugador)
         (getCarcelJugador jugador)
         nuevaCartaCarcel))
+
+
+
+
+
