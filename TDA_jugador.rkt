@@ -2,6 +2,7 @@
 
 (provide (all-defined-out))
 (require "TDA_propiedades.rkt")
+(require "TDA_tablero.rkt")
 ;Esta comentada correctamente
 
 ; Descripción: Esta funcion permite crear a los jugadores tomando en cuenta lo solicitado y lo necesario para el juego.
@@ -9,10 +10,8 @@
 ; Rec: devuelve una lista con los datos señalados arriba
 ; Tipo recursión: No aplica.
 (define (jugador id nombre dinero propiedades posicion estadoCarcel totalCartasCarcel)
-  (list id nombre dinero (list propiedades) posicion estadoCarcel totalCartasCarcel ))
-;prueba
-;; para usar
-;(define jugador1 (jugador 82 "luciano" 2888 '() 0 #f 0))
+  (list id nombre dinero propiedades posicion estadoCarcel totalCartasCarcel ))
+
 
 
 
@@ -76,7 +75,7 @@
 ; Descripción: Esta funcion entrega el estado de la carce, true si esta en la carcel, false si no lo esta
 ; Dom: jugador conslut(ado (list)
 ; Rec: Estado de carcel (bool)(indexacion 5)
-; Tipo recursión: No aplica.>
+; Tipo recursión: No aplica.
 (define getCarcelJugador
   (lambda(jugador)
     (parametroJugador jugador 5)))
@@ -89,6 +88,7 @@
 (define getCartasCarcelJugador
   (lambda(jugador)
     (parametroJugador jugador 6)))
+
 ; ni el id ni el nombre debe ser cambiado por lo que no hare setter
 
 ; Descripción: esta funcion sirve para cambiar el dinero a determinado jugador
@@ -104,7 +104,12 @@
          (getPosicionJugador jugador)
          (getCarcelJugador jugador)
          (getCartasCarcelJugador jugador)))
+
 ;funcion que perimt emodificar propiedades
+; Descripción: Esta Funcion permite modificar la lista de propiedades del jugador
+; Dom: juegador(list)
+; Rec: propiedades(list)
+; Tipo recursión: No aplica.
 (define(setPropiedades jugador propiedad)
   (list(getIdJugador jugador)
        (getNombreJugador jugador)
@@ -119,12 +124,12 @@
 ; Dom: jugador(list)XValoresDados(par)Xjuego
 ; Rec: una nueva lista del jugador con todos los atributos iguales excepto la posicion(int) que ha sido actualizada
 ; Tipo recursión: No aplica.
-(define (jugador-mover jugador valoresDados juego)
+(define (jugador-mover jugador dados juego)
   (list (getIdJugador jugador)
         (getNombreJugador jugador)
         (getDineroJugador jugador)
         (getPropiedadesJugador jugador)
-       (+ (getPosicionJugador jugador) (car (valoresDados) (cadr(valoresDados))))
+       (+ (getPosicionJugador jugador) (car (dados) (cadr(dados))))
         (getCarcelJugador jugador)
         (getCartasCarcelJugador jugador)))
 ;funcion que perimte modificar estado de carcel
@@ -158,6 +163,10 @@
 
 
 ; jugador comprar propiedad
+; Descripción: Esta funcion permite que el jugador compre la propiedad si este tiene el dinero suficiente
+; Dom: jugador(list)Xpropiedad(list)
+; Rec: jugador(list)
+; Tipo recursión: No aplica.
 (define (jugador-comprar-propiedad jugador propiedad)
   (if(>= (getDineroJugador jugador)(getPrecioPropiedad propiedad))
      (setPropiedades
@@ -166,3 +175,37 @@
   jugador);si es falso va aca 
   )
 
+;jugador calcular renta
+;esta funcion es para ver la posicion que esta el jugador(o sea la propiedad donde esta y devolver el valor de esa renta)
+; Descripción: Esta funcion calcula el valor de la renta dependiendo de que  la propiedad que se encunetre este
+; Dom: jugador(list)Xjuego(list)
+; Rec: ValorRenta(int)
+; Tipo recursión: No aplica.
+(define (jugador-calcular-renta jugador juego)
+  (getRentaPropiedad (buscar-posicion-propiedad (getPosicionJugador jugador) (getListaPropiedadesTablero juego))))
+
+;entrega la propiedad asociada a la posicion
+;esto me devuelve la propiedad completa, toda la lista
+;usa recursion
+; Descripción: hace una recursion para buscar en propiedades(list) la posicion en la cual esta el jugador, mediante el id  de estas propiedades
+; Dom: posicion(int)Xpropiedades(list)
+; Rec: propiedad(list)
+; Tipo recursión: De cola
+(define (buscar-posicion-propiedad posicion propiedades)
+  (cond
+    [(= (getIdPropiedad (car propiedades)) posicion) (car propiedades)]
+    [else (buscar-posicion-propiedad posicion (cdr propiedades))]))
+; funciones para utlizar las cartas especiales
+; Descripción: Esta funcion perimite modificar la posicion del jugador, sirve para utilizar las cartas de comunindad y suerte
+; Dom: jugador(list)XnuevaPosicion(int)
+; Rec: jugador(list)
+; Tipo recursión: No aplica.
+
+(define (setPosicion jugador nuevaPosicion)
+  (list (getIdJugador jugador)
+        (getNombreJugador jugador)
+        (getDineroJugador jugador)
+        (getPropiedadesJugador jugador)
+        nuevaPosicion
+        (getCarcelJugador jugador)
+(getCartasCarcelJugador jugador)))
