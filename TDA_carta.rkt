@@ -6,9 +6,11 @@
 ; Rec: una lista con los paraetros del dominio
 ; Tipo recursión: No aplica.
 (define (carta id tipo descripcion accion)(list id tipo descripcion accion))
+
+
 ; Descripción: esta funcion entrega una lista referenciada para poder usar los indices al momento de buscar los parametros
 ; Dom: carta(list)
-; Rec: rista referenciada de los parametros de la lista carta
+; Rec: Lista referenciada de los parametros de la lista carta
 ; Tipo recursión: No aplica.
 (define parametroCarta
   (lambda( carta n)
@@ -34,7 +36,7 @@
     parametroCarta carta 1))
 
 ;funcion para obtener la descripcion de la carta
-; Descripción: Esta funciion entrega la descrippcion de la lista
+; Descripción: Esta funciion entrega la descripcion de la lista
 ; Dom: carta(list)
 ; Rec: descripcion(string)
 ; Tipo recursión: No aplica.
@@ -45,7 +47,7 @@
 ;funcion para obtener la accion de la carta
 ; Descripción: esta funcion entrega la funcion de la carta
 ; Dom: carta(list)
-; Rec: accion(string)???????
+; Rec: accion(string)
 ; Tipo recursión: No aplica.
 (define getAccionCarta
   (lambda(carta)
