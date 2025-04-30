@@ -1,6 +1,7 @@
 #lang racket
 (provide (all-defined-out))
 (require "TDA_jugador.rkt")
+
 ;;; setter de todo
 ;;getter de todo para actualiar
 ; Descripción: ESta funcion es un TDA constructor del juego

@@ -1,6 +1,12 @@
 #lang racket
 (provide (all-defined-out))
-(require "TDA_juego.rkt")
+
+(require racket/lazy-require)
+(lazy-require ["TDA_juego.rkt" (getMaximoCasas getMaximoHotel)])
+
+
+
+ 
 ;ESTA COMENTADA
 
 ; TDA Propiedades
@@ -136,11 +142,11 @@
      (list (getIdPropiedad propiedad)
            (getNombrePropiedad propiedad)
            (getPrecioPropiedad propiedad)
-           (getRentaproiedad propiedad)
+           (getRentaPropiedad propiedad)
            (getDueñoPropiedad)
            0
            #t
-           (getHipotecadapropiedad propiedad))
+           (getHipotecadaPropiedad propiedad))
      
      propiedad))
  
@@ -183,7 +189,7 @@
 ; Rec: calucularRenta(int)
 ; Tipo recursión: No aplica.
 
-(define (propiedad-calcular-renta propiedad)
+(define (propiedad-calcular-renta propiedad juego)
  ( cond
     [(= #t (getHipotecadaPropiedad propiedad)) 0]
     [(= #t (getHotelPropiedad propiedad)) (* (getRentaPropiedad propiedad)(getMaximoCasas juego)1.2 2)]
