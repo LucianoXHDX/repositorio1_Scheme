@@ -1,12 +1,20 @@
 #lang racket
 ;este sera mi main
-(require "TDA_jugador.rkt")
+;forma de comentar
+; esta funcion sirve para obtener el nombre del jugador
+; Descripción: 
+; Dom: 
+; Rec: 
+; Tipo recursión: No aplica.
+
 (require "TDA_propiedades.rkt")
 (require "TDA_carta.rkt")
 (require "TDA_juego.rkt")
 (require "TDA_jugador.rkt")
 (require "TDA_tablero.rkt")
-(require "TDA_dados.rkt")
+
+;la funcion del agregar propiedad tira errorrr ateno
+
 ; de aqui para abajo es prueba de lo de arriba compila
 ; de aqui para abajo deberia ir en otro script importando y exportando funciones
 (define (carta id tipo descripcion accion)(list id tipo descripcion accion))
@@ -39,4 +47,5 @@
 (define carta2(carta 2 "suerte" "perdiste100" perder100))
 (define carta3(carta 3 "suerte" "vas directo a la salida" avanzarSalida))
 (define carta4(carta 4 "arca" "conseguiste una carta para salir gratis de la carcel" salirCarcel))
-
+;
+;

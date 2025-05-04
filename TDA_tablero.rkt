@@ -63,12 +63,12 @@
 ; Dom: tablero(list)
 ; Rec: una lista de tablero con todos los parametros iguales excepto la lista de propiedad.
 ; Tipo recursión: No aplica.
-(define (tablero-agregar-propiedad nuevaPropiedad)
+(define (tablero-agregar-propiedad tab propiedades)
   (tablero
-  (cons nuevaPropiedad (getListaPropiedadesTablero)
-        (getListaSuerteTablero)
-        (getListaComunidadTablero)
-        (getListaEspecialesTablero))))
+  (append propiedades (getListaPropiedadesTablero tab))
+        (getListaSuerteTablero tab)
+        (getListaComunidadTablero tab)
+        (getListaEspecialesTablero tab)))
 
 
 ; Descripción: Esta funcion permite agregr una carta de suerte a la lista de cartas de suerte del tablero
