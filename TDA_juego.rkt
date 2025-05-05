@@ -3,8 +3,7 @@
 (require "TDA_jugador.rkt")
 (require "TDA_tablero.rkt")
 (require "TDA_carta.rkt")
-;;; setter de todo
-;;getter de todo para actualiar
+
 ; Descripción: ESta funcion es un TDA constructor del juego
 ; Dom: jugadores(lista)Xtablero(tablero)XdineroBanco(int)XnumeroDados(int)XturnoActual(int)XtasaImpuesto(int)XmaximoCasas(int)XmaximoHoteles(int)
 ; Rec: Una lista con los argumentos del dominio
@@ -104,9 +103,17 @@
    (getMaximoHoteles game)))
 ;dados
 ; Funcion myRandom
+; Descripción: Genera un número pseudoaleatorio utilizando una fórmula estándar de congruencia lineal.
+; Dom: Xn(int)
+; Rec: número entero(int)
+; Tipo recursión: No aplica.
 (define (myRandom Xn)
   (modulo (+ (* 1103515245 Xn) 12345) 2147483648))
 ; Funcion getDadoRandom que recibe la semilla y controla los resultados
+; Descripción: Genera un valor aleatorio entre 1 y 6 (como un dado) a partir de una semilla dada.
+; Dom: seed(int)
+; Rec: valor(int)
+; Tipo recursión: No aplica.
 (define (getDadoRandom seed)                    
   (+ 1 (modulo (myRandom seed) 6)))
 ;funcion para tirar los dados
@@ -133,7 +140,11 @@
   (newline))
 
 ; juego extraer carta
-
+;falta comentar esto
+; Descripción: Extrae una carta de un mazo determinado (suerte o comunidad) y aplica su acción al jugador actual del juego.
+; Dom: juego(list)Xtipo-mazo(string)
+; Rec: juego(list)
+; Tipo recursión: No aplica.
 (define (juego-extraer-carta juego tipo-mazo)
   (if (string=? tipo-mazo "suerte")
       ;si es del mazo suert
