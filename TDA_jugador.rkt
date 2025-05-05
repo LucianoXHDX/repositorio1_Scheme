@@ -209,3 +209,34 @@
         nuevaPosicion
         (getCarcelJugador jugador)
 (getCartasCarcelJugador jugador)))
+; funcion pagar renta
+; Descripción: Esta funcion perimite que un jugador le pague la renta a otro jugador, modificando asi los valores
+; Dom: jugador-pagador(jugador(list))Xjugador-receptor(jugador(list))Xmonto(int)
+; Rec: list(jugador-pagadorXjugador-receptor)
+; Tipo recursión: No aplica.
+(define (jugador-pagar-renta jugador-pagador jugador-receptor monto)
+  (list
+   (list (getIdJugador jugador-pagador)
+        (getNombreJugador jugador-pagador)
+        (-  (getDineroJugador jugador-pagador) monto)
+        (getPropiedadesJugador jugador-pagador)
+        (getPosicionJugador jugador-pagador)
+        (getCarcelJugador jugador-pagador))
+       (list (getIdJugador jugador-receptor)
+             (getNombreJugador jugador-receptor)
+             (+ (getDineroJugador jugador-receptor) monto )
+             (getPropiedadesJugador jugador-receptor)
+             (getPosicionJugador jugador-receptor)
+             (getCarcelJugador jugador-receptor))))
+  
+  
+; verificar bancarrota
+; Descripción: Esta funcion perimite verificar si un jugador esta en bancarrota o no
+; Dom: jugador(list)
+; Rec: bool(#t si esta en bancarrota, #f si esto es falso)
+; Tipo recursión: No aplica.
+(define (jugador-esta-en-bancarrota jugador)
+  (if (<= (getDineroJugador jugador) 0)
+  #t ;esta en bancarrita
+  #f ;no esta en bancarrota
+  ))

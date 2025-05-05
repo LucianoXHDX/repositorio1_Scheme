@@ -151,11 +151,11 @@
      propiedad))
  
 ;setter para hipotecada
-; Descripción: Esta Funcion permite modificar el booleano de que si la propiedad esta hipotecada(true) o no (false)
+; Descripción: Esta Funcion permite modificar el booleano de la hipoteca, pasa el bool de false a true(donde si esta hipotecada)
 ; Dom: propiedad(list)
 ; Rec: una nueva lista de la propiedad con el booleano esHipotecada(bool) modificado
 ; Tipo recursión: No aplica.
-(define (setHipotecada propiedad nuevaHipotecada)
+(define (propiedad-hipotecada propiedad)
   (list (getIdPropiedad propiedad)
         (getNombrePropiedad propiedad)
         (getPrecioPropiedad propiedad)
@@ -163,7 +163,7 @@
         (getDueñoPropiedad propiedad)
         (getCasasPropiedad propiedad)
         (getHotelPropiedad propiedad)
-        nuevaHipotecada
+        #t
         ))
 
 ;setter para renta

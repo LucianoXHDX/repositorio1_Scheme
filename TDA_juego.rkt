@@ -1,11 +1,12 @@
 #lang racket
 (provide (all-defined-out))
 (require "TDA_jugador.rkt")
-
+(require "TDA_tablero.rkt")
+(require "TDA_carta.rkt")
 ;;; setter de todo
 ;;getter de todo para actualiar
 ; Descripción: ESta funcion es un TDA constructor del juego
-; Dom: jugadores(list)Xtablero(tablero)XdineroBanco(int)XnumerosDados(int)XturnoActual(int)XmaximoCasas(int)XmaximoHoteles(int)XestadoJuego(string)
+; Dom: jugadores(lista)Xtablero(tablero)XdineroBanco(int)XnumeroDados(int)XturnoActual(int)XtasaImpuesto(int)XmaximoCasas(int)XmaximoHoteles(int)
 ; Rec: Una lista con los argumentos del dominio
 ; Tipo recursión: No aplica.
 (define(juego jugadores tablero dineroBanco numeroDados turnoActual tasaImpuesto maximoCasas maximoHoteles)
@@ -117,7 +118,10 @@
  (let ((dados(list (getDadoRandom numero1)(getDadoRandom numero2))))
   (mostrar-dados dados)
   dados))
-
+; Descripción: Muestra el resultado de los valores del los dados
+; Dom: dados(list)
+; Rec: dados(list)
+; Tipo recursión: No aplica.
 (define (mostrar-dados dados)
   (display "el primer valor del dado es:")
   (newline)
@@ -127,3 +131,13 @@
   (newline)
   (display(cadr dados))
   (newline))
+
+; juego extraer carta
+
+(define (juego-extraer-carta juego tipo-mazo)
+  (if (string=? tipo-mazo "suerte")
+      ;si es del mazo suert
+      (getAccionCarta (list-ref(getListaSuerteTablero juego)(random 10))) (juego-obtener-jugador-actual juego))
+  
+      ;si no es del mazo suerte
+  (getAccionCarta (list-ref(getListaComunidadTablero juego)(random 10))) (juego-obtener-jugador-actual juego))
